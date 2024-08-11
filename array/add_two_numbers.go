@@ -1,8 +1,9 @@
 package array
 
-import "math"
+import "strconv"
 
 // AddTwoNumbers solves the problem in O(n) time and O(1) space.
+/*
 func AddTwoNumbers(num1, num2 []int) []int {
 	num1, num2 = equalizeLengths(num1, num2)
 	carry := false
@@ -32,4 +33,31 @@ func equalizeLengths(num1, num2 []int) ([]int, []int) {
 		num2 = append(zeros, num2...)
 	}
 	return num1, num2
+}
+*/
+
+func AddTwoNumbers(num1, num2 []int) []int {
+	acc1 := ""
+	acc2 := ""
+
+	for _, e := range num1 {
+		acc1 += strconv.Itoa(e)
+	}
+	for _, e := range num2 {
+		acc2 += strconv.Itoa(e)
+	}
+
+	n1, _ := strconv.Atoi(acc1)
+	n2, _ := strconv.Atoi(acc2)
+
+	res := n1 + n2
+	resStr := strconv.Itoa(res)
+
+	resArr := []int{}
+	for _, e := range resStr {
+		r := int(e - '0')
+		resArr = append(resArr, r)
+	}
+
+	return resArr
 }
